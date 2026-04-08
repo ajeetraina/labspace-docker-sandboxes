@@ -2,94 +2,66 @@
 
 ## What you've learned
 
-In Labs 2–4 you explored all three threat vectors from inside a sandboxed
-Labspace environment:
-
 | Threat | Without sbx | With sbx |
 |--------|-------------|----------|
-| Filesystem | Agent sees `~/Videos`, `~/.ssh`, everything | Only `~/expenseflow` mounted |
-| Credentials | All env vars exposed, `~/.aws` readable | No creds in env, injected via proxy |
-| Network | Any URL reachable, exfiltration possible | Policy-defined allow list only |
-
-Now let's set this up on your actual machine.
+| Filesystem | Agent sees your entire home directory | Only project directory mounted |
+| Credentials | All env vars exposed | No creds in env — injected via proxy |
+| Network | Any URL reachable | Policy-defined allow list only |
 
 ## Install sbx
 
 ```bash
-# macOS
 brew install docker/tap/sbx
-
-# Windows (PowerShell)
-# winget install Docker.sbx
-
-# Linux
-# curl -fsSL https://get.docker.com/sbx | sh
 ```
-
-Verify the install:
 
 ```bash
 sbx version
 ```
 
-## Clone ExpenseFlow
+## Run ExpenseFlow safely
 
 ```bash
 git clone https://github.com/ajeetraina/expenseflow
 cd expenseflow
-npm install
 ```
 
-## Your first sandboxed agent run
+Before (risky):
 
 ```bash
-# Without sbx — agent has full access (risky)
-# claude "Refactor the codebase and clean up old files"
+claude "Refactor the codebase and clean up old files"
+```
 
-# With sbx — agent sees only this directory
+After (safe):
+
+```bash
 sbx run claude "Refactor the codebase and clean up old files"
 ```
 
-## YOLO mode — safely
+One word added. Same task. Completely different trust boundary.
 
-The real power of sbx is enabling full agent autonomy without anxiety:
+## YOLO mode — safely
 
 ```bash
 sbx run claude --dangerously-skip-permissions \
-  "Refactor ExpenseFlow:
-   1. Fix the N+1 query in src/db.js — use a JOIN instead
-   2. Fix the SQL injection in getMonthlyTotals — use parameterized queries
-   3. Add connection pooling (pool size 10)
-   4. Update outdated npm packages
-   5. Remove log files older than 30 days from logs/"
+  "Fix the N+1 query in src/db.js, fix the SQL injection in
+   getMonthlyTotals, add connection pooling, update outdated
+   packages, and delete log files older than 30 days."
 ```
 
-`--dangerously-skip-permissions` means no approval prompts. The agent works
-unattended. And sbx means your host is completely safe regardless of what
-the agent does inside the microVM.
+Full autonomy. No approval prompts. Your host is completely safe.
 
-## Works with any coding agent
+## Review what changed
 
 ```bash
-sbx run gemini    "Review and refactor src/db.js"
-sbx run opencode  "Fix the security issues in the codebase"
-sbx run gh copilot "Suggest improvements for the expense routes"
-```
-
-## Dispose and repeat
-
-```bash
-# When the session ends, destroy the microVM
 sbx stop
-
-# The project files you asked the agent to change are saved (bind mount)
-# Everything else — any tools installed, any side effects — is gone
-git diff    # see exactly what the agent changed
-git add -p  # review and selectively stage changes
+git diff
+git add -p
 ```
 
-## What's next
+The microVM is gone. The project changes are preserved. Nothing else was touched.
 
-- [Docker Sandboxes documentation](https://docs.docker.com/ai/sandboxes/)
-- [Collabnix community](https://collabnix.com) — more Docker AI tutorials
-- Add `sbx run` to your team's contributing guide so every developer runs agents safely
+## Next steps
+
+- [Docker Sandboxes docs](https://docs.docker.com/ai/sandboxes/)
+- [ExpenseFlow on GitHub](https://github.com/ajeetraina/expenseflow)
+- [Collabnix community](https://collabnix.com)
