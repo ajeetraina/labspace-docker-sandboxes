@@ -1,13 +1,35 @@
 title: Safe AI Agent Execution with Docker Sandboxes
 description: |
-  Every developer has had that moment — you asked an AI coding agent to "clean things
-  up" and it deleted something important. Or it quietly read your AWS credentials.
+  Every developer has had that moment — you asked an AI coding agent to
+  "clean things up" and it deleted something important. Or it quietly read
+  your AWS credentials.
 
-  This workshop tells one real story: a developer uses an AI agent to refactor
-  ExpenseFlow, a Node.js expense tracker with live Stripe and AWS keys. Without
-  Docker Sandboxes, the agent has full access to the filesystem, every credential,
-  and the entire network. With sbx, it runs inside a microVM with only the project
-  mounted — your host stays completely untouched.
+  This workshop tells one real story using ExpenseFlow, a Node.js expense
+  tracker with Stripe and AWS keys. Without Docker Sandboxes the agent has
+  full access to the filesystem, every credential, and the entire network.
+  With sbx it runs inside a microVM with only the project mounted.
 
-  You'll explore all three threat vectors hands-on inside this Labspace, then learn
-  how a single command — sbx run — eliminates all of them on your own machine.
+  You will explore all three threat vectors hands-on, then learn how a
+  single command — sbx run — eliminates all of them on your own machine.
+
+sections:
+  - id: introduction
+    title: Introduction
+    description: Meet ExpenseFlow and the three threat vectors
+    file: 01-introduction.md
+  - id: filesystem
+    title: Filesystem isolation
+    description: When "clean up" goes wrong
+    file: 02-filesystem.md
+  - id: credentials
+    title: Credentials isolation
+    description: Secrets the agent should not see
+    file: 03-credentials.md
+  - id: network
+    title: Network isolation
+    description: Controlling what the agent can reach
+    file: 04-network.md
+  - id: local-setup
+    title: Run sbx locally
+    description: Installing and using sbx on your own machine
+    file: 05-local-setup.md
