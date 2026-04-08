@@ -1,0 +1,9 @@
+# Docker Sandboxes network policy for ExpenseFlow
+# Run agents with: sbx run --policy .sbx-policy.yaml claude "..."
+network:
+  allow:
+    - registry.npmjs.org
+    - api.github.com
+    - api.stripe.com
+  block:
+    - "*"

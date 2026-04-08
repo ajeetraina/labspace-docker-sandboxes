@@ -1,0 +1,15 @@
+services:
+  configurator:
+    environment:
+      PROJECT_CLONE_URL: https://github.com/ajeetraina/labspace-docker-sandboxes
+
+  workspace:
+    environment:
+      # Pre-inject fake credentials so learners can observe them in Lab 3
+      STRIPE_SECRET_KEY: sk_live_DEMO_abc123xyz_NOT_REAL
+      AWS_ACCESS_KEY_ID: AKIAIOSFODNN7EXAMPLE
+      AWS_SECRET_ACCESS_KEY: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+      AWS_S3_BUCKET: expenseflow-demo-receipts
+      ANTHROPIC_API_KEY: sk-ant-DEMO_NOT_REAL
+      GITHUB_TOKEN: ghp_DEMO16CharTokenXYZ
+      DATABASE_URL: postgresql://localhost:5432/expenseflow

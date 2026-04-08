@@ -1,0 +1,31 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      DATABASE_URL: postgresql://postgres:password@db:5432/expenseflow
+      STRIPE_SECRET_KEY: ${STRIPE_SECRET_KEY:-sk_live_REPLACE_ME}
+      AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID:-REPLACE_ME}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY:-REPLACE_ME}
+      AWS_S3_BUCKET: ${AWS_S3_BUCKET:-expenseflow-receipts}
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: expenseflow
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pgdata:

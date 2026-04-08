@@ -1,0 +1,4 @@
+2024-01-01T00:00:00Z INFO  Server started on port 3000
+2024-01-01T00:01:23Z INFO  GET /expenses 200 45ms
+2024-01-15T14:30:00Z WARN  Slow query: getMonthlyTotals took 1243ms
+2024-01-31T23:59:59Z INFO  Daily backup complete

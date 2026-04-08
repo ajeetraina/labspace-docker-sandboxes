@@ -1,0 +1,4 @@
+2024-02-01T00:00:01Z INFO  Server started on port 3000
+2024-02-14T09:12:00Z ERROR DB connection timeout after 30000ms
+2024-02-14T09:12:05Z INFO  Reconnected successfully
+2024-02-29T23:59:59Z INFO  Daily backup complete
