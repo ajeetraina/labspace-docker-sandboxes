@@ -9,8 +9,8 @@ description: |
   full access to the filesystem, every credential, and the entire network.
   With sbx it runs inside a microVM with only the project mounted.
 
-  You will explore all three threat vectors hands-on, then learn how a
-  single command — sbx run — eliminates all of them on your own machine.
+  Explore all three threat vectors hands-on, then learn how a single
+  command — sbx run — eliminates all of them on your own machine.
 
 sections:
   - id: introduction
@@ -19,7 +19,7 @@ sections:
     file: 01-introduction.md
   - id: filesystem
     title: Filesystem isolation
-    description: When "clean up" goes wrong
+    description: When clean up goes wrong
     file: 02-filesystem.md
   - id: credentials
     title: Credentials isolation
