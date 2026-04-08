@@ -16,20 +16,20 @@ sections:
   - id: introduction
     title: Introduction
     description: Meet ExpenseFlow and the three threat vectors
-    file: 01-introduction.md
+    content: 01-introduction.md
   - id: filesystem
     title: Filesystem isolation
     description: When clean up goes wrong
-    file: 02-filesystem.md
+    content: 02-filesystem.md
   - id: credentials
     title: Credentials isolation
     description: Secrets the agent should not see
-    file: 03-credentials.md
+    content: 03-credentials.md
   - id: network
     title: Network isolation
     description: Controlling what the agent can reach
-    file: 04-network.md
+    content: 04-network.md
   - id: local-setup
     title: Run sbx locally
     description: Installing and using sbx on your own machine
-    file: 05-local-setup.md
+    content: 05-local-setup.md
