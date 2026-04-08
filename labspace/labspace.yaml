@@ -13,23 +13,18 @@ description: |
   command — sbx run — eliminates all of them on your own machine.
 
 sections:
-  - id: introduction
-    title: Introduction
+  - title: Introduction
     description: Meet ExpenseFlow and the three threat vectors
-    content: 01-introduction.md
-  - id: filesystem
-    title: Filesystem isolation
+    contentPath: 01-introduction.md
+  - title: Filesystem isolation
     description: When clean up goes wrong
-    content: 02-filesystem.md
-  - id: credentials
-    title: Credentials isolation
+    contentPath: 02-filesystem.md
+  - title: Credentials isolation
     description: Secrets the agent should not see
-    content: 03-credentials.md
-  - id: network
-    title: Network isolation
+    contentPath: 03-credentials.md
+  - title: Network isolation
     description: Controlling what the agent can reach
-    content: 04-network.md
-  - id: local-setup
-    title: Run sbx locally
+    contentPath: 04-network.md
+  - title: Run sbx locally
     description: Installing and using sbx on your own machine
-    content: 05-local-setup.md
+    contentPath: 05-local-setup.md
